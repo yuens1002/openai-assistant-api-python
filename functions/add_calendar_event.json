@@ -1,0 +1,75 @@
+{
+  "name": "add_calendar_event",
+  "description": "when instructed to add a calendar event, extracts details about an event",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "event_name": {
+        "type": "string",
+        "default": "summary of the user input in 8 words or less"
+      },
+      "event_description": {
+        "type": "string",
+        "default": "a bit more details about the event"
+      },
+      "event_location": {
+        "type": "string"
+      },
+      "start_date_time": {
+        "type": "string",
+        "format": "mm/dd/yyyy h:mm AM/PM"
+      },
+      "end_date_time": {
+        "type": "string",
+        "format": "mm/dd/yyyy h:mm AM/PM"
+      },
+      "reminder_default": {
+        "type": "boolean"
+      },
+      "reminders": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "method": {
+              "type": "string",
+              "enum": [
+                "email",
+                "popup"
+              ]
+            },
+            "minutes": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "method",
+            "minutes"
+          ]
+        }
+      },
+      "attendees": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "email": {
+              "type": "string",
+              "format": "email"
+            },
+            "display_name": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "email"
+          ]
+        }
+      }
+    },
+    "required": [
+      "start_date_time",
+      "end_date_time"
+    ]
+  }
+}
